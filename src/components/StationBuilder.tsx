@@ -62,7 +62,7 @@ export default class StationBuilder extends Component<StationBuilderProps, Stati
 		super(props);
 
 		const packet = cloneDeep(props.data);
-		
+
 		let stations: Stop[] = [];
 		let platforms: Stop[] = [];
 		packet.stops.forEach((stop: Stop) => {
@@ -401,7 +401,7 @@ export default class StationBuilder extends Component<StationBuilderProps, Stati
 		this.props.onCancel();
 	}
 
-	private handleStopDragEnd = (nodeId: string, position: {x: number, y: number}) => {
+	private handleStopDragEnd = (nodeId: string, position: { x: number, y: number }) => {
 		const stop: Stop | undefined = this.state.data.stops.find((stop: Stop) => {
 			return stop.stopId === nodeId;
 		});
@@ -412,7 +412,7 @@ export default class StationBuilder extends Component<StationBuilderProps, Stati
 		}
 	}
 
-	private handleFareZoneAdd = (position: {x: number, y: number}, callback: (nodes: VisNode[], edges: VisEdge[]) => void) => {
+	private handleFareZoneAdd = (position: { x: number, y: number }, callback: (nodes: VisNode[], edges: VisEdge[]) => void) => {
 		const node1: VisNode = VisService.prepareNewNode({
 			x: position.x,
 			y: position.y
@@ -508,9 +508,11 @@ export default class StationBuilder extends Component<StationBuilderProps, Stati
 					<div className="right">
 						<div className="panel">
 							<div className="calculator">
-								Depth: <input type="text" onChange={(e) => {this.setState({
-									escalatorCalculatorTime: Number(e.target.value) * 3
-								})}} />m = <span>{this.state.escalatorCalculatorTime}</span> s
+								Depth: <input type="text" onChange={(e) => {
+									this.setState({
+										escalatorCalculatorTime: Number(e.target.value) * 3
+									})
+								}} />m = <span>{this.state.escalatorCalculatorTime}</span> s
 							</div>
 							{this.state.stations && this.state.stations[0] && this.state.stations[0].stationImgUrl && <div className="img">
 								<label>
